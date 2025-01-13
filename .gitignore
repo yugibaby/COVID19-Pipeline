@@ -1,0 +1,14 @@
+# .gitignore
+# Python
+__pycache__/
+*.pyc
+
+# dbt profiles
+dbt/profiles.yml
+
+# Environment variables
+.env
+*.env
+
+# Secrets or credentials
+dagster/config/*.secrets.yaml
