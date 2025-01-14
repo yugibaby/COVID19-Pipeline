@@ -43,6 +43,7 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
    python -m venv venv
    source venv/bin/activate   # On Windows: venv\Scripts\activate
    ```
+
 3. **Configure Environment Variables:**
    Copy and customize the `.env.example` file:
    ```bash
@@ -75,8 +76,6 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
    cd dagster_pipeline
    pip install -r requirements.txt
    ```
-
-
 
 5. **Run the Pipeline:**
    - Navigate to the `dagster_pipeline` directory and start Dagster:
@@ -117,14 +116,10 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
      Below is an example output of a successful `dbt run` command:
 
      ![DBT Run Output](assets/dbt_tables.PNG)
-     ```bash
-     dbt run
-     ```
 
 ---
 
 ## Dataset Analysis
-
 
 #### 1. What are the top 5 most common values in a particular column, and what is their frequency?
 
@@ -149,31 +144,31 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
   - Peru: 5.15%
   - Somalia: 4.98%
 
-2. How does a particular metric change over time within the dataset?
+#### 2. How does a particular metric change over time within the dataset?
+
 The two most critical metrics in the dataset are:
 
-Total Confirmed Cases
-Total Deaths
+- **Total Confirmed Cases**
+- **Total Deaths**
+
 These serve as the main variables for computed metrics such as incidence_rate and case_fatality_ratio. 
-Both confirmed and deaths columns increase over time as they represent cumulative totals, recorded daily from the beginning of the tracking period to the most recent reporting date.
+Both `confirmed` and `deaths` columns increase over time as they represent cumulative totals, recorded daily from the beginning of the tracking period to the most recent reporting date.
 
 Notably:
-Recording of recovered cases and active cases has been discontinued in many regions, reducing their relevance over time.
+- Recording of recovered cases and active cases has been discontinued in many regions, reducing their relevance over time.
 
-
-3. Is there a correlation between two specific columns? Explain your findings.
+#### 3. Is there a correlation between two specific columns? Explain your findings.
 
 In the current dataset, useful correlations are limited because:
 
-Metrics such as confirmed and deaths are reported as cumulative totals, which obscure the rate of change over time.
-Direct correlations between totals, such as confirmed and deaths, tend to be trivially high because they inherently increase together.
+- Metrics such as `confirmed` and `deaths` are reported as cumulative totals, which obscure the rate of change over time.
+- Direct correlations between totals, such as `confirmed` and `deaths`, tend to be trivially high because they inherently increase together.
 
 Introduce a Column for Daily Changes to improve Correlation Analysis:
 
 ![Supplementary Table](assets/supplement.PNG)
 
-Create a new column to track daily increments (e.g., confirmed_diff, deaths_diff).
-This would allow meaningful analysis of how metrics evolve over time and potentially reveal correlations between daily changes, seasonality of metrics, clustering of geospatial data for climate correlations, vaccination rate, lockdown guidelines etc..
+- Create a new column to track daily increments (e.g., `confirmed_diff`, `deaths_diff`).
+- This would allow meaningful analysis of how metrics evolve over time and potentially reveal correlations between daily changes, seasonality of metrics, clustering of geospatial data for climate correlations, vaccination rate, lockdown guidelines, etc.
 
-The case_fatality_ratio metric (deaths/confirmed) could provide insights, but it requires supplementary data (e.g., healthcare access, population density, or comorbidities) to uncover meaningful relationships.
-
+The `case_fatality_ratio` metric (`deaths/confirmed`) could provide insights, but it requires supplementary data (e.g., healthcare access, population density, or comorbidities) to uncover meaningful relationships.
