@@ -25,16 +25,28 @@ diff_calculated AS (
             PARTITION BY country_region, province_state, admin2 ORDER BY last_update_date
         ) AS death_diff -- Difference in deaths
     FROM parsed_data
+),
+
+filtered_data AS (
+    SELECT
+        * 
+    FROM diff_calculated
+    WHERE confirmed_diff IS NOT NULL -- Remove rows where confirmed_diff is NULL
+      AND death_diff IS NOT NULL     -- Remove rows where death_diff is NULL
+	  AND lat IS NOT NULL			  -- Remove rows where lat is NULL
+	  AND long_ IS NOT NULL			  -- Remove rows where long_ is NULL
 )
 
 SELECT
     country_region,
     province_state,
     admin2,
+	lat,
+	long_,
     last_update_date,
     confirmed,
     confirmed_diff,
     deaths,
     death_diff
-FROM diff_calculated
+FROM filtered_data
 ORDER BY country_region, province_state, admin2, last_update_date
