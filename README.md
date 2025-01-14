@@ -38,13 +38,7 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
    cd COVID19-Pipeline
    ```
 
-2. **Set Up Virtual Environment:**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
-   ```
-
-3. **Configure Environment Variables:**
+2. **Configure Environment Variables:**
    Copy and customize the `.env.example` file:
    ```bash
    cp .env.example .env
@@ -71,13 +65,13 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
      DATABASE_URL=your-database-url
      ```  
 
-4. **Install Dependencies:**
+3. **Install Dependencies:**
    ```bash
    cd dagster_pipeline
    pip install -r requirements.txt
    ```
 
-5. **Run the Pipeline:**
+4. **Run the Pipeline:**
    - Navigate to the `dagster_pipeline` directory and start Dagster:
      ```bash
      dagit
@@ -87,9 +81,8 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
    ![Dagster Launchpad](assets/dagster_ui.PNG)
 
    Run the pipeline in the Launchpad and Dagster will ingest data and load it into PostgreSQL.
-   
 
-6. **Process Data with dbt:**
+5. **Process Data with dbt:**
    - Navigate to the `covid_data_project` directory and set environment variables:
      ```bash
      set POSTGRES_HOST=your_host
