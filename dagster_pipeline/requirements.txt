@@ -1,0 +1,7 @@
+dagster
+pandas
+requests
+sqlalchemy
+pandera
+python-dotenv
+psycopg2-binary
