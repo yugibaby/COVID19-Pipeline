@@ -85,7 +85,7 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
      ```
    - Access the UI at `http://localhost:3000` to launch the pipeline.
 
-   ![Dagster Launchpad](assets/dagster_ui.png)
+   ![Dagster Launchpad](assets/dagster_ui.PNG)
 
    Run the pipeline in the Launchpad and Dagster will ingest data and load it into PostgreSQL.
    
@@ -107,7 +107,7 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
 
      Below is an example output of a successful `dbt debug` command:
 
-     ![DBT Debug Output](assets/dbt_check.png)
+     ![DBT Debug Output](assets/dbt_check.PNG)
 
    - Run dbt transformations:
      ```bash
@@ -116,7 +116,7 @@ Data pipeline designed for collecting, processing, and analyzing the JHU CSSE CO
 
      Below is an example output of a successful `dbt run` command:
 
-     ![DBT Run Output](assets/dbt_tables.png)
+     ![DBT Run Output](assets/dbt_tables.PNG)
      ```bash
      dbt run
      ```
@@ -170,7 +170,7 @@ Direct correlations between totals, such as confirmed and deaths, tend to be tri
 
 Introduce a Column for Daily Changes to improve Correlation Analysis:
 
-![Supplementary Table](assets/supplement.png)
+![Supplementary Table](assets/supplement.PNG)
 
 Create a new column to track daily increments (e.g., confirmed_diff, deaths_diff).
 This would allow meaningful analysis of how metrics evolve over time and potentially reveal correlations between daily changes, seasonality of metrics, clustering of geospatial data for climate correlations, vaccination rate, lockdown guidelines etc..
